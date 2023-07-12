@@ -99,7 +99,7 @@ submit.addEventListener('click', () => {
         }
     }
     else{
-        alert('Please Select atleast one option')
+        alert('Please select one option')
     }
 })
 
