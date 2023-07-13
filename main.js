@@ -36,22 +36,19 @@ const arr = [
 const box = document.getElementById('box');
 const question = document.getElementById('question');
 const options = document.querySelectorAll('.option');
-const optionA = document.getElementById('optionA');
-const optionB = document.getElementById('optionB');
-const optionC = document.getElementById('optionC');
-const optionD = document.getElementById('optionD');
 const submit = document.getElementById('submit');
 
 
 let index = 0;
 let score = 0;
 
-swap();
-
-render();
-
 function render(){
 
+    const optionA = document.getElementById('optionA');
+    const optionB = document.getElementById('optionB');
+    const optionC = document.getElementById('optionC');
+    const optionD = document.getElementById('optionD');
+    
     deselect();
 
     const currentmcq = arr[index];
@@ -88,14 +85,14 @@ submit.addEventListener('click', () => {
         
         index++;
 
-        if(index < arr.length){
-            render();
-        }
-        else{
+        if(index === arr.length){
             box.innerHTML = `
             <h2>You answered ${score}/${arr.length} questions correctly</h2>
             <button onclick = "location.reload()" > Reload </button>
             `
+        }
+        else{
+            render();
         }
     }
     else{
@@ -109,3 +106,7 @@ function swap(){
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
 }
+
+swap();
+
+render();
